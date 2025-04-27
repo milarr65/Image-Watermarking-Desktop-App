@@ -2,7 +2,7 @@
 
 A very simple app that allows users to upload an image and add a text watermark to it. It can handle different fonts and weights, font size, opacity and has 9 position options to choose from.
 
-**_Made with CustomTkinter._**
+**_Made with CustomTkinter and PILLOW._**
 
 ![app_screenshot](<screenshots/Captura de pantalla 2025-04-24 205907.png>)
 
