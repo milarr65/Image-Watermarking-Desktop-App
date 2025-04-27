@@ -10,7 +10,7 @@ A very simple app that allows users to upload an image and add a text watermark 
 
 1. Clone this repository or download it as a zip file (you'll need Python installed):
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/milarr65/Image-Watermarking-Desktop-App.git
    ```
 2. Open the directory in your preferred text editor or terminal.
 3. Create a virtual environment and activate it:
