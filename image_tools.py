@@ -78,13 +78,14 @@ def get_system_fonts_json(save_path="system_fonts.json"):
 
         except Exception as e:
             continue  # Skip unreadable/broken fonts
-
+    
+    sorted_fonts = dict(sorted(system_fonts.items()))
     # Save to JSON (this is for debbuging)
     # with open(save_path, "w", encoding="utf-8") as f:
-    #     json.dump(system_fonts, f, indent=2, ensure_ascii=False)
+    #     json.dump(sorted_fonts, f, indent=2, ensure_ascii=False)
 
     # print(f"✅ Font data saved to {save_path}")
-    return dict(system_fonts)
+    return dict(sorted_fonts)
 
 def save_image(image:Image.Image):
     """Saves image with watermark. Returns None."""
@@ -120,7 +121,8 @@ def create_text_layer(state):
     
     # Parameters to use
     draw = ImageDraw.Draw(text_layer)
-    font = ImageFont.truetype(font=state.font_path, size=state.font_size)
+    font = ImageFont.truetype(font=state.font_path, 
+                              size=state.font_size)
     rgba_color = (255, 255, 255, state.opacity)
 
     # Place text in the desired position

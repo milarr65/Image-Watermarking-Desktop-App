@@ -9,6 +9,10 @@ class Frames(ctk.CTkFrame):
         self.state = state # watermark state instance
         self.fonts = get_system_fonts_json()
         
+        for f in self.fonts.items():
+            if "Arial" in f[0]: # ‹- tuple
+                self.arial = f[0] #arial font's name as str
+                
 
         # //////////// LEFT FRAME-OPTIONS MENU /////////////////
         self.left_frame = ctk.CTkFrame(master, width=334)
@@ -124,17 +128,21 @@ class Frames(ctk.CTkFrame):
             filetypes=[("Image Files", "*.png *.jpg *.jpeg *.bmp")]
         )
         
-        if file_path:
-            with Image.open(file_path) as img:
-                self.state.current_image = img.copy()
-                self.state.edited_image = img.copy()
+        try:
+            if file_path:
+                with Image.open(file_path) as img:
+                    self.state.current_image = img.copy()
+                    self.state.edited_image = img.copy()
+        except Exception as e:
+            print(f"Error uploading image: {e}")
+            return
 
         self.state.position = calc_position("center", self.state)
-        self.state.font_path = self.fonts["Arial"]["medium"]
+        self.state.font_path = self.fonts[self.arial]["medium"]
 
         # UPDATE MENUS
-        self.font_menu.set("Arial")
-        self.weights_list = [weight for weight in self.fonts["Arial"].keys()]
+        self.font_menu.set(self.arial)
+        self.weights_list = [weight for weight in self.fonts[self.arial].keys()]
         self.weight_menu.configure(values=self.weights_list)
         self.weight_menu.set(self.weights_list[0])
         self.pos_menu.set("Center")

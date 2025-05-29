@@ -8,14 +8,14 @@ import pprint
 class WatermarkState():
   def __init__(self) -> None:
     self.text = "Sample"
-    self.opacity = int = 128 # 0-255 opacity in rgb - 128 is 50%
+    self.opacity = 128 # 0-255 opacity in rgb - 128 is 50%
     self.font_path = str = None #Font path eg: arial.ttf
-    self.font_size = int = 72 # 12-150 size in px
+    self.font_size = 72 # 12-150 size in px
     self.position = tuple = None # (x, y) pixel coordinates to place text
     self.text_anchor = "ms"
-    self.current_image = Image = None #PIL IMAGE
-    self.edited_image = Image = None  #PIL IMAGE
-    self.ctk_image = ctk.CTkImage = None  #CTKIMAGE VERSION OF CURRENT IMAGE
+    self.current_image: Image #PIL IMAGE
+    self.edited_image: Image  #PIL IMAGE
+    self.ctk_image: ctk.CTkImage  #CTKIMAGE VERSION OF CURRENT IMAGE
 
   def show_preview(self, preview_label:ctk.CTkLabel):
     """Updates ctk label widget to show the image being edited currently."""
